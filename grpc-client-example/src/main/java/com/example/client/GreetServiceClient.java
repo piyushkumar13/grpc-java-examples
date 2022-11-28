@@ -13,6 +13,7 @@ import com.example.Channel;
 import com.example.greetservice.GreetRequest;
 import com.example.greetservice.GreetResponse;
 import com.example.greetservice.GreetServiceGrpc;
+import java.util.concurrent.TimeUnit;
 import io.grpc.ManagedChannel;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
@@ -33,6 +34,7 @@ public class GreetServiceClient {
         GreetRequest request1 = GreetRequest.newBuilder().setFirstName("Piyush").setLastName("Kumar").build();
 
         GreetResponse greetResponse1 = clientStub.greet(request1);
+//        GreetResponse greetResponse1 = clientStub.withDeadlineAfter(5, TimeUnit.SECONDS).greet(request1); // We can also set the deadline for the client call.
         System.out.println("Response from first request ::: " + greetResponse1);
 
 
